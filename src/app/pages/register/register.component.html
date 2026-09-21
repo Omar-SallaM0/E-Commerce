@@ -1,1 +1,40 @@
-<p>register works!</p>
+<section>
+  <div class="container w-full">
+    <h1>Register form</h1>
+    <form  (ngSubmit)="onSubmit()">
+      <div class="field">
+        <p-inputGroup>
+        <p-inputGroupAddon>
+            <i class="pi pi-user"></i>
+        </p-inputGroupAddon>
+        <input pInputText placeholder="Username" />
+    </p-inputGroup>
+      </div>
+
+      <div class="field">
+        <p-inputGroup>
+        <p-inputGroupAddon>
+            <i class="pi pi-envelope"></i>
+        </p-inputGroupAddon>
+        <input pInputText placeholder="Email" />
+    </p-inputGroup>
+      </div>
+      <div class="field">
+        <p-inputGroup>
+        <p-inputGroupAddon>
+            <i class="pi pi-lock"></i>
+        </p-inputGroupAddon>
+        <input pInputText placeholder="Password" />
+    </p-inputGroup>
+      </div>
+      <div class="field">
+        <p-inputGroup>
+        <p-inputGroupAddon>
+            <i class="pi pi-lock"></i>
+        </p-inputGroupAddon>
+        <input pInputText placeholder="Confirm Password" />
+    </p-inputGroup>
+      </div>
+    </form>
+  </div>
+</section>
