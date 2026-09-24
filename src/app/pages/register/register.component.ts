@@ -15,6 +15,7 @@ import { IRegister } from '../../core/interfaces/iregister';
 import { AuthServiceService } from '../../core/services/auth.service';
 import { SharedModule } from '../../../shared/shared.module';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { UserDataService } from '../../core/services/user-data-service.service';
 @Component({
   selector: 'app-register',
   standalone: true,
@@ -35,7 +36,7 @@ export class RegisterComponent {
     private _authService: AuthServiceService,
     //private _notifecationsService: NotifecationsService,
     private _router: Router,
-    //private _userData: UserDataService
+    private _userData: UserDataService
   ) {
     this.initFormControls();
     this.initFormGroupe();
@@ -96,9 +97,9 @@ export class RegisterComponent {
           const { username, password } = data;
           this._authService.login({ username, password }).subscribe((next) => {
             localStorage.setItem('token', response._id);
-            localStorage.setItem('username', response.name);
             this._router.navigate(['user']);
-            //this._userData.userName.next(response.name);
+            this._userData.userName.next(response.name);
+            localStorage.setItem('username', response.name);
           });
         }
       },

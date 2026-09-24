@@ -4,12 +4,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { baseUrl } from '../apiRoot/base-url';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthServiceService {
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   register(registerData: IRegister) :Observable<any> {
     return this.http.post(`https://dummyjson.com/users/add`, registerData);

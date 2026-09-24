@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { SharedModule } from '../../../shared/shared.module';
 import { AuthServiceService } from '../../core/services/auth.service';
 import { ILogin } from '../../core/interfaces/iregister';
+import { UserDataService } from '../../core/services/user-data-service.service';
 
 
 @Component({
@@ -24,7 +25,7 @@ export class LoginComponent {
     private authService_: AuthServiceService,
   //  private _notifecationsService: NotifecationsService,
     private router: Router,
-    //private _userData: UserDataService
+    private _userData: UserDataService
   ) {
     this.initFormControls();
     this.initFormGroupe();
@@ -69,9 +70,9 @@ export class LoginComponent {
       next: (response) => {
         //  this._notifecationsService.showSuccess('success', 'success login');
         localStorage.setItem('token', response.accessToken);
-        //  this._userData.userName.next(response.name);
-        localStorage.setItem('username', response.username);
+        this._userData.userName.next(response.username);
         this.router.navigate(['home']);
+        localStorage.setItem('username', response.username);
       },
       error: (err) => {
        // this._notifecationsService.showError('Error', err.error.error);

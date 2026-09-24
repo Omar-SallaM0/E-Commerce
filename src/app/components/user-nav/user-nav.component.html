@@ -1,11 +1,19 @@
 <div class="card">
   <p-menubar [model]="items">
+
+    <!-- Logo -->
     <ng-template pTemplate="start">
       <figure class="my-0 mx-2">
-        <img class="w-2rem" src="./assets/logo.svg" alt="logo" />
+        <img
+          class="w-2rem"
+          src="./assets/logo.svg"
+          alt="logo"
+        />
       </figure>
     </ng-template>
-    <ng-template pTemplate="item" let-item let-root="root">
+
+    <!-- Menu Items -->
+    <ng-template pTemplate="item" let-item>
       <a
         [routerLink]="item?.['path']"
         pRipple
@@ -16,8 +24,11 @@
       </a>
     </ng-template>
 
+    <!-- Right Side -->
     <ng-template pTemplate="end">
       <div class="card flex justify-content-center align-items-center gap-3">
+
+        <!-- Cart -->
         <a [routerLink]="['/cart']">
           <i
             class="pi pi-shopping-cart text-3xl"
@@ -25,23 +36,32 @@
             [value]="cartCount"
           ></i>
         </a>
-        <!-- <a
-          (click)="logOut = !logOut"
-          class="user-name p-3 text-white bg-orange-400 font-bold capitalize relative cursor-pointer"
-        >
-          <span>{{ username }}</span>
+
+        <!-- User -->
+        <div class="user-wrapper relative">
+
+          <div
+            (click)="logOut = !logOut"
+            class="user-name p-3 text-white font-bold capitalize cursor-pointer"
+          >
+            <span>{{ username }}</span>
+          </div>
 
           @if (logOut) {
-          <a
-            (click)="logout()"
-            class="logout py-2 px-5 text-white bg-orange-400 font-bold absolute left-50 flex align-items-center gap-3"
-          >
-            <span>logout</span>
-            <span class="pi pi-sign-out"> </span>
-          </a>
+            <button
+              type="button"
+              (click)="logout()"
+              class="logout py-2 px-5 text-white font-bold flex align-items-center gap-3"
+            >
+              <span>Logout</span>
+              <span class="pi pi-sign-out"></span>
+            </button>
           }
-        </a> -->
+
+        </div>
+
       </div>
     </ng-template>
+
   </p-menubar>
 </div>
