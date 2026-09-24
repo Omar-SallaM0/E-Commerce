@@ -1,0 +1,21 @@
+.p-element.p-button {
+  display: block;
+  width: 100%;
+}
+.register-container {
+  width: 80%;
+  max-width: 700px;
+  height: auto;
+}
+.validation-msg{
+ // height: 10px;
+  height: fit-content;
+}
+
+form,
+.field,
+p-inputGroup,
+input {
+  width: 100%;
+
+}
