@@ -1,27 +1,90 @@
-# ECommerce
+# 🛒 E-Commerce Angular Application
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.17.
+A responsive E-Commerce web application built with **Angular 17**, **TypeScript**, **PrimeNG**, and **PrimeFlex**.
 
-## Development server
+The application provides a simple shopping experience with authentication, product browsing, categories, product details, and cart management.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## 🚀 Features
 
-## Code scaffolding
+* 🔐 **Authentication**
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+  * Login & Register
+  * Route protection using Auth Guard
 
-## Build
+* 🏠 **Home Page**
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+  * Promotional product gallery
+  * Popular products
+  * Responsive product cards
 
-## Running unit tests
+* 🛍️ **Products**
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+  * Browse products
+  * Product pagination
+  * Product search
 
-## Running end-to-end tests
+* 🗂️ **Categories**
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+  * Browse product categories
+  * View products by category
 
-## Further help
+* 📦 **Product Details**
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+  * Product image
+  * Description
+  * Price & discount
+  * Brand, stock, rating, and availability
+  * Add to Cart
+
+* 🛒 **Shopping Cart**
+
+  * View added products
+  * Remove products
+  * Check cart items
+  * Navigate between products and cart
+
+* ⚡ **Performance & UX**
+
+  * Lazy-loaded routes
+  * Reusable components
+  * Loading spinner
+  * Responsive design
+
+* 🖥️ **Angular SSR**
+
+  * Server-Side Rendering support
+
+## 🛠️ Technologies
+
+* Angular 17
+* TypeScript
+* RxJS
+* PrimeNG
+* PrimeFlex
+* PrimeIcons
+* Angular SSR
+* REST API
+* SCSS
+
+## 📁 Main Structure
+
+```text
+src/app
+├── components
+├── layouts
+├── pages
+├── services
+├── guards
+├── interfaces
+└── app.routes.ts
+```
+
+
+## 👨‍💻 Author
+
+**Omar Ahmed Sallam**
+
+Junior Full-Stack (.NET & Angular) Developer
+
+* GitHub: [Omar-SallaM0](https://github.com/Omar-SallaM0)
+* LinkedIn: [Omar Sallam](https://www.linkedin.com/in/omar-sallam-9aa483259/)
