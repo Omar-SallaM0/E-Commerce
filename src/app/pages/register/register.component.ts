@@ -10,12 +10,11 @@ import { Router } from '@angular/router';
 
 import { IRegister } from '../../core/interfaces/iregister';
 
-//import { NotifecationsService } from '../../core/service/notifecations.service';
-//import { UserDataService } from '../../core/service/user-data.service';
 import { AuthServiceService } from '../../core/services/auth.service';
 import { SharedModule } from '../../../shared/shared.module';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { UserDataService } from '../../core/services/user-data-service.service';
+import { NotifecationsService } from '../../core/services/notifecations.service';
 @Component({
   selector: 'app-register',
   standalone: true,
@@ -34,7 +33,7 @@ export class RegisterComponent {
 
   constructor(
     private _authService: AuthServiceService,
-    //private _notifecationsService: NotifecationsService,
+    private _notifecationsService: NotifecationsService,
     private _router: Router,
     private _userData: UserDataService
   ) {
@@ -93,7 +92,7 @@ export class RegisterComponent {
     this._authService.register(data).subscribe({
       next: (response) => {
         if (response._id) {
-       //   this._notifecationsService.showSuccess('success', 'success register');
+          this._notifecationsService.showSuccess('success', 'success register');
           const { username, password } = data;
           this._authService.login({ username, password }).subscribe((next) => {
             localStorage.setItem('token', response._id);
@@ -104,7 +103,7 @@ export class RegisterComponent {
         }
       },
       error: (err) => {
-      //  this._notifecationsService.showError('Error', err.error.error);
+      this._notifecationsService.showError('Error', err.error.error);
       console.log(err.error.error);
       },
     });

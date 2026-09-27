@@ -1,13 +1,17 @@
-import { inject } from '@angular/core';
+//import { inject } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivateFn, Router, RouterStateSnapshot } from '@angular/router';
 import { AuthServiceService } from '../core/services/auth.service';
+import { isPlatformBrowser } from '@angular/common';
+import { inject, PLATFORM_ID } from '@angular/core';
+export const authGuardGuard: CanActivateFn = () => {
+  const router = inject(Router);
+  const platformId = inject(PLATFORM_ID);
 
-export const authGuardGuard: CanActivateFn = (route, state) => {
-const router = inject(Router);
-  const auth = inject(AuthServiceService);
-  if (localStorage.getItem('token')) {
-    return true;
-  } else {
-    return router.createUrlTree(['login']);
+  if (!isPlatformBrowser(platformId)) {
+    return false;
   }
+
+  return localStorage.getItem('token')
+    ? true
+    : router.createUrlTree(['/login']);
 };

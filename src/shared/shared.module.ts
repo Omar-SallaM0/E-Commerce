@@ -17,6 +17,7 @@ import { MessagesModule } from 'primeng/messages';
     InputTextModule,
     ButtonModule,
     MessagesModule,
+    NgxSpinnerModule,
     AutoFocusModule,
   ],
   exports: [
@@ -26,6 +27,7 @@ import { MessagesModule } from 'primeng/messages';
     InputTextModule,
     ButtonModule,
     MessagesModule,
+    NgxSpinnerModule,
     AutoFocusModule,
   ],
 })

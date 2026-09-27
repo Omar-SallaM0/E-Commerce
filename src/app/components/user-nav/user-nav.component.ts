@@ -9,6 +9,8 @@ import { AvatarModule } from "primeng/avatar";
 import { InputTextModule } from "primeng/inputtext";
 import { RippleModule } from "primeng/ripple";
 import { CommonModule } from "@angular/common";
+import { CartServiceService } from "../../core/services/cart-service.service";
+import { NgxSpinnerModule } from "ngx-spinner";
 
 @Component({selector: 'app-user-nav',
   standalone: true,
@@ -17,7 +19,7 @@ import { CommonModule } from "@angular/common";
     AvatarModule,
     InputTextModule,
     RippleModule,
-    CommonModule,
+    CommonModule,NgxSpinnerModule
   ],
   templateUrl: './user-nav.component.html',
   styleUrl: './user-nav.component.scss',
@@ -25,7 +27,8 @@ import { CommonModule } from "@angular/common";
 
 export class UserNavComponent {
   constructor(
-    private _userData: UserDataService,
+    private cart: CartServiceService,
+    private _userData : UserDataService,
     private _auth: AuthServiceService,
     private router: Router,
 
@@ -34,7 +37,7 @@ export class UserNavComponent {
   items: MenuItem[] | undefined;
   logOut = false;
   username = '';
-  cartCount = 0;
+  cartCount:number = 0;
 
   ngOnInit(): void {
     this.getUserName();
@@ -64,8 +67,16 @@ export class UserNavComponent {
     });
   }
 
-  getUserCartCount(): void {
+
+ getUserCartCount(): void {
     const id = localStorage.getItem('token') ?? '';
-    this._userData.getCartCount(id).subscribe((next) => (this.cartCount = next));
+    this.cart.countOfCart.subscribe((next) => (this.cartCount = next));
   }
+
+
+  logout(): void {
+      localStorage.removeItem('token');
+      localStorage.removeItem('username');
+      this.router.navigate(['/auth/login']);
+  };
 }

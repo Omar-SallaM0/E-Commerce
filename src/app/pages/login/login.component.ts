@@ -6,6 +6,7 @@ import { SharedModule } from '../../../shared/shared.module';
 import { AuthServiceService } from '../../core/services/auth.service';
 import { ILogin } from '../../core/interfaces/iregister';
 import { UserDataService } from '../../core/services/user-data-service.service';
+import { NotifecationsService } from '../../core/services/notifecations.service';
 
 
 @Component({
@@ -23,7 +24,7 @@ export class LoginComponent {
 
   constructor(
     private authService_: AuthServiceService,
-  //  private _notifecationsService: NotifecationsService,
+    private _notifecationsService: NotifecationsService,
     private router: Router,
     private _userData: UserDataService
   ) {
@@ -68,15 +69,16 @@ export class LoginComponent {
   siginIn(data: ILogin): void {
     this.authService_.login(data).subscribe({
       next: (response) => {
-        //  this._notifecationsService.showSuccess('success', 'success login');
+        this._notifecationsService.showSuccess('success', 'success login');
         localStorage.setItem('token', response.accessToken);
         this._userData.userName.next(response.username);
         this.router.navigate(['home']);
         localStorage.setItem('username', response.username);
+        localStorage.setItem("userId",response.id.toString());
       },
       error: (err) => {
-       // this._notifecationsService.showError('Error', err.error.error);
-       console.log(err.error.error);
+        this._notifecationsService.showError('Error', err.error.error);
+        console.log(err.error.error);
       },
     });
   }
