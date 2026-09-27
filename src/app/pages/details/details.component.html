@@ -2,38 +2,25 @@
   <div class="container">
     <div class="grid align-items-center pb-5">
       <div class="md:col-6">
-        <figure>
-          <img
-            class="w-full"
-            [src]="productDetails.image"
-            [alt]="productDetails.title"
-          />
-        </figure>
+        @if (productDetails) {
+  <figure>
+    <img
+      class="w-full"
+      [src]="productDetails.images[0]"
+      [alt]="productDetails.title"
+    />
+  </figure>
+}
       </div>
       <div class="md:col-6">
-        <p class="font-medium mt-1 mb-3 text-color-secondary">
+        <p class="font-medium font-bold mt-1 mb-3 text-color-secondary">
           {{ productDetails.title }}
         </p>
 
         <p class="font-medium text-sm my-1">
           {{ productDetails.description }}
         </p>
-        <div class="flex align-items-center gap-2 mb-4">
-          <div class="price flex gap-2 align-items-center">
-            <span class="text-color-secondary font-bold">
-              <del>14</del>
-            </span>
-            <span class="new-price font-bold">
-              <span class="text-green-400">$</span> {{ productDetails.price }}
-            </span>
-          </div>
-          <div class="offer">
-            <span class="bg-red-500 p-1 border-circle text-white text-xs"
-              >%{{ productDetails.discount }}</span
-            >
-            <span class="fonot-bold text-xs font-bold px-1">off</span>
-          </div>
-        </div>
+
         <div>
           <div
             class="flex align-items-center justify-content-between capitalize"
@@ -46,33 +33,27 @@
           <div
             class="flex align-items-center justify-content-between capitalize"
           >
-            <p class="text-color-secondary my-1">model:</p>
+            <p class="text-color-secondary my-1">Stock :</p>
             <p class="font-bold text-orange-500 my-1">
-              {{ productDetails.model }}
+              {{ productDetails.stock }}
             </p>
           </div>
+
           <div
             class="flex align-items-center justify-content-between capitalize"
           >
-            <p class="text-color-secondary my-1">color:</p>
-            <p class="font-bold text-orange-500 my-1">
-              {{ productDetails.color }}
-            </p>
-          </div>
-          <div
-            class="flex align-items-center justify-content-between capitalize"
-          >
-            <p class="text-color-secondary my-1">category:</p>
+            <p class="text-color-secondary my-1">category :</p>
             <p class="font-bold text-orange-500 my-1">
               {{ productDetails.category }}
             </p>
           </div>
+
           <div
             class="flex align-items-center justify-content-between capitalize"
           >
-            <p class="text-color-secondary my-1">discount:</p>
+            <p class="text-color-secondary my-1">Price :</p>
             <p class="font-bold text-orange-500 my-1">
-              {{ productDetails.discount }}
+              {{ productDetails.price }} $
             </p>
           </div>
         </div>

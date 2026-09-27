@@ -29,6 +29,7 @@ export interface IProducts {
   brand: string;
   model: string;
   color: string;
+  stock:number
   category: string;
   discount: number;
   popular: boolean;
